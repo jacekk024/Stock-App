@@ -1,58 +1,48 @@
-import {Button, Text,View,FlatList,StyleSheet} from "react-native";
-
+import { Text,View,FlatList, Button,TouchableOpacity } from "react-native";
 import { useState,useEffect } from "react";
 
+import myStyles from "../Styles/Styles"
+import {getCurrencyFromNBP,getFlags} from "../Services/Requests"
+import CountryFlag from "react-native-country-flag";
+import styles from "../Styles/Styles";
 
-const HomeComponent = ({route,navigation}) => {
+const HomeComponent = ({navigation}) => {
 
-    const [x,setX] = useState(0); // hook stanu z poczatkowo wartoscia 0, x is readonly 
-    const [data, setData] = useState({});
-    
+    const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
 
-    const getCurrencyFromNBP = async () =>{
-
-        try{
-            const response = await 
-            //fetch('http://api.nbp.pl/api/cenyzlota/?format=json'); 
-            fetch('http://api.nbp.pl/api/exchangerates/tables/a/?format=json'); 
-            if(response.status == 200){
-                const json = await response.json();
-                setData(json[0].rates);
-            }
-        }
-        catch(error){
-            console.error(error);
-        }
+    const fetchCoinInfo = async () => {
+        const coinInfo = await getCurrencyFromNBP();
+        setData(coinInfo);
     };
-
+    
     useEffect(() => {
-        getCurrencyFromNBP();
-      }, []);
-
-    const styles = StyleSheet.create({
-        itemWrapperStyle: {
-            flexDirection: "row",
-            paddingHorizontal: 16,
-            paddingVertical: 16,
-            borderBottomWidth: 1,
-            borderColor: "#ddd",
-          }
-    });
+        fetchCoinInfo();
+    }, []);
 
     const renderItem = ({item}) => {
         return(
-            <View style = {styles.itemWrapperStyle}>
-                <Text> {item.code} {item.currency} {item.mid}</Text>
-            </View>
+            <TouchableOpacity
+                style={{padding: 15}}
+                onPress={()=> {
+                    navigation.navigate('Currency',{item:item}) // gdzie wysylamy i jakie properties
+                }}>
+                <View style = {myStyles.itemWrapperStyle}>
+                    <Text> {item.code} {item.mid}</Text>
+                    <Text style ={styles.item}></Text>
+                    <CountryFlag isoCode={item.code.charAt(0)+item.code.charAt(1)} size={25} />
+                </View>
+            </TouchableOpacity>
         );
     };
-
+    
     return(
+    <View>
         <FlatList
             data={data}
-            renderItem={renderItem}
             keyExtractor = {item => item.code}
+            renderItem={renderItem} 
         />
+    </View>
     );
 };
 

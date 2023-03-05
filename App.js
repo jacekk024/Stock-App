@@ -1,5 +1,5 @@
 import *as React from 'react';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import MainStack from './NavigationStack/MainStack'
 
 

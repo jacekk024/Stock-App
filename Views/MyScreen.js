@@ -1,9 +1,9 @@
-import { Text,View} from "react-native";
+import { Text,View,Image} from "react-native";
 
-const MyScreen = ({route,navigation}) => {
+const MyScreen = ({navigation}) => {
     return(
         <View>
-            <Text>To jest tekst</Text>
+            <Text>Symulacja Finansowa</Text>
         </View>
     );
 };
