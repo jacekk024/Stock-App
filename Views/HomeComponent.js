@@ -1,7 +1,6 @@
 import { Text,View,FlatList, Button,TouchableOpacity } from "react-native";
 import { useState,useEffect } from "react";
 
-import myStyles from "../Styles/Styles"
 import {getCurrencyFromNBP,getFlags} from "../Services/Requests"
 import CountryFlag from "react-native-country-flag";
 import styles from "../Styles/Styles";
@@ -24,9 +23,9 @@ const HomeComponent = ({navigation}) => {
             <TouchableOpacity
                 style={{padding: 15}}
                 onPress={()=> {
-                    navigation.navigate('Currency',{item:item}) // gdzie wysylamy i jakie properties
+                    navigation.navigate('Currency',{code:item.code,mid:item.mid,currency:item}) // gdzie wysylamy i jakie properties
                 }}>
-                <View style = {myStyles.itemWrapperStyle}>
+                <View style = {styles.itemWrapperStyle}>
                     <Text> {item.code} {item.mid}</Text>
                     <Text style ={styles.item}></Text>
                     <CountryFlag isoCode={item.code.charAt(0)+item.code.charAt(1)} size={25} />

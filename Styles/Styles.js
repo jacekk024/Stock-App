@@ -10,13 +10,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderColor: "#8b0000",
       },
-      item: {
+    item: {
         flex:2,
       },
-      background: {
+    background: {
         headerMode: 'screen',
         cardStyle: { backgroundColor: '#deb887' },
-      }
+      },
+    
+
+
 });
 
 export default styles;
