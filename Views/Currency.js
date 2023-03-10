@@ -1,67 +1,35 @@
-import {Text,View} from "react-native";
-import { Dimensions } from "react-native";
+import { Text,View,Dimensions} from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import SwitchSelector from "react-native-switch-selector";
+import { useState,useEffect} from "react";
+import {getCurrencyFromNBPDate} from "../Services/Requests"
+
 import styles from "../Styles/Styles";
-
-const screenWidth = Dimensions.get("window").width;
-
-
-
-
-
-
+import chart from "../Views/Chart";
 
 const Currency = ({route,navigation}) => {
+
+    const switchChartOptions = (value) => {
+      if(value == "Month")
+        console.log("dupa 1")    
+      if(value == "3 Months")
+        console.log("dupa 2")     
+    };
+
+    const switchoptions = [
+      { label: "Month", value: "Month" },
+      { label: "3 Months", value: "3 Months" }
+    ]; 
+
     const {code, mid, currency} = route.params;
+
     return(
-        <View>
-            <Text>name:{code}</Text>
-
-
-            <LineChart
-    data={{
-      labels: ["January", "February", "March", "April", "May", "June"],
-      datasets: [
-        {
-          data: [
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100
-          ]
-        }
-      ]
-    }}
-    width={Dimensions.get("window").width} // from react-native
-    height={220}
-    yAxisLabel="$"
-    yAxisSuffix="k"
-    yAxisInterval={1} // optional, defaults to 1
-    chartConfig={{
-      backgroundColor: "#e26a00",
-      backgroundGradientFrom: "#fb8c00",
-      backgroundGradientTo: "#ffa726",
-      decimalPlaces: 2, // optional, defaults to 2dp
-      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      style: {
-        borderRadius: 16
-      },
-      propsForDots: {
-        r: "6",
-        strokeWidth: "2",
-        stroke: "#ffa726"
-      }
-    }}
-    bezier
-    style={{
-      marginVertical: 8,
-      borderRadius: 16
-    }}
-  />
-
+        <View >
+          <Text style>{currency}</Text>
+          <SwitchSelector
+            options={switchoptions}
+            initial={0}
+            onPress={(value) => switchChartOptions(value)}/>
         </View>
     );
 };

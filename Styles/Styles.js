@@ -17,7 +17,16 @@ const styles = StyleSheet.create({
         headerMode: 'screen',
         cardStyle: { backgroundColor: '#deb887' },
       },
-    
+    CurrencyView:{
+      flex: 1,
+      flexDirection: "row",
+      flexWrap: 'wrap',
+      paddingHorizontal: 16,
+      paddingVertical: 20,
+    },
+    CurrencyViewCoin:{
+      flex: 2,
+    }
 
 
 });
