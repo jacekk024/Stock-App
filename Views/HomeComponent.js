@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 
 import {getCurrencyFromNBP} from "../Services/Requests"
 import CountryFlag from "react-native-country-flag";
-import styles from "../Styles/Styles";
+import styles from "../Styles/StylesHome";
 
 const HomeComponent = ({navigation}) => {
 
