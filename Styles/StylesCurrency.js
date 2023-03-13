@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         flexDirection: 'row'
     },
+    textInputStyle: {
+        backgroundColor:  "#dcdcdc",
+        height: 50,
+        margin: 20,
+        borderWidth: 3,
+        padding: 10,
+    },
   });
   
 

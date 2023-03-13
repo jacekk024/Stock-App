@@ -1,30 +1,16 @@
 import React from 'react';
-import { StyleSheet,Text,View,TextInput,Button} from "react-native";
+import {Text,View,TextInput} from "react-native";
 import {Picker} from '@react-native-picker/picker';
-import { useState,useEffect } from "react";
-import {getCurrencyFromNBP} from "../Services/Requests"
+import { useState } from "react";
 import styles from "../Styles/StylesCurrencyCalculator";
 
 
 
 const CurrencyCalculator = ({navigation}) => {
 
-
-    const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
-
     const [selectedValueFirst, setSelectedValueFisrt] = useState("PLN");
     const [selectedValueSecond, setSelectedValueSecond] = useState("USD");
     const [amount, onChangeAmount] = useState(10);
-
-
-    const fetchCoinInfo = async () => {
-        const coinInfo = await getCurrencyFromNBP();
-        setData(coinInfo);
-    };
-    
-    useEffect(() => {
-        fetchCoinInfo();
-    }, []);
 
     return(
     <View> 
@@ -47,8 +33,9 @@ const CurrencyCalculatorView = ({
     setSelectedValueFisrt,
     setSelectedValueSecond,
     onChangeAmount,
-    amount
+    amount,
 }) => (
+
 <View>
     <View>
             <TextInput
@@ -78,13 +65,14 @@ const CurrencyCalculatorView = ({
             <Picker
                 selectedValue={selectedValueSecond}
                 style={{height: 50, width: 150 }}
-                onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}> 
-                <Picker.Item label="USD"  value="USD" />
-                <Picker.Item label="PLN" value="PL" />
+                onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}>
+                <Picker.Item label= "USD"  value="USD" />
+                <Picker.Item label= "PLN" value="PL" /> 
             </Picker>
         </View>  
     </View>
 </View>
 );
+
 
 export default CurrencyCalculator;

@@ -1,18 +1,34 @@
 import { Dimensions} from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import { useState,useEffect } from "react";
+
 import {getCurrencyFromNBPDate} from "../Services/Requests"
 
 
-const createChart = ({route}) => {
+const CreateChart = ({code,mid,currency}) => {
 
-    const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
-    const {value} = route.params;
-
-
+    const [myData, setData] = useState([]); // hook stanu z poczatkowo wartoscia 0, x is readonly 
+    //  const {value} = route.params;
+    const midArray = [];
 
     const fetchCoinInfoDate = async () => {
-        const coinInfo = await getCurrencyFromNBPDate(value);
+
+        date = CalculateTime();
+        endDate = date[0];
+        startDate = date[1];
+
+        console.log(endDate);
+        console.log(startDate);
+
+        const coinInfo = await getCurrencyFromNBPDate(startDate,endDate,code);
+
         setData(coinInfo);
+        
+        for (let i = 0; i < myData.length; i++) {
+          midArray.push(myData[i].mid);
+        }
+
+        console.log(midArray);
     };
 
     useEffect(() => {
@@ -21,9 +37,10 @@ const createChart = ({route}) => {
 
   return(
 
+
+
     <LineChart
     data={{
-      labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [
         {
           data: [
@@ -39,8 +56,8 @@ const createChart = ({route}) => {
     }}
     width={Dimensions.get("window").width} // from react-native
     height={220}
-    yAxisLabel="$"
-    yAxisSuffix="k"
+
+    yAxisSuffix={code}
     yAxisInterval={1} // optional, defaults to 1
     chartConfig={{
       backgroundColor: "#e26a00",
@@ -66,3 +83,25 @@ const createChart = ({route}) => {
   />
 );
 }
+
+const CalculateTime = () =>{
+
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear(); 
+  
+  var ddPast = String(new Date(new Date().setDate(today.getDate() - 30)).getDay()).padStart(2, '0');
+  var mmPast = String(new Date(new Date().setDate(today.getDate() - 30)).getMonth()).padStart(2, '0');
+  var yyyyPast = new Date(new Date().setDate(today.getDate() - 30)).getFullYear();
+
+  var priorDate = yyyyPast + '-' + mmPast + '-'+ ddPast;
+  today = yyyy + '-' + mm + '-' + dd;
+
+  return [today,priorDate];
+};
+
+export default CreateChart;
+
+
+
