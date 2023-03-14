@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text,View,TextInput} from "react-native";
 import {Picker} from '@react-native-picker/picker';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styles from "../Styles/StylesCurrencyCalculator";
 
 
@@ -11,9 +11,19 @@ const CurrencyCalculator = ({navigation}) => {
     const [selectedValueFirst, setSelectedValueFisrt] = useState("PLN");
     const [selectedValueSecond, setSelectedValueSecond] = useState("USD");
     const [amount, onChangeAmount] = useState(10);
+    const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
+
+    // const fetchCoinInfo = async () => {
+    //     const coinInfo = await getCurrencyFromNBP();
+    //     setData(coinInfo);
+    // };
+    
+    // useEffect(() => {
+    //     fetchCoinInfo();
+    // }, []);
 
     return(
-    <View> 
+    <View style = {styles.cardStyle}> 
         <CurrencyCalculatorView
             selectedValueFirst = {selectedValueFirst}
             selectedValueSecond = {selectedValueSecond}
@@ -21,6 +31,7 @@ const CurrencyCalculator = ({navigation}) => {
             setSelectedValueSecond = {setSelectedValueSecond}
             onChangeAmount = {onChangeAmount}
             amount = {amount}
+            data = {data}
         >           
         </CurrencyCalculatorView>
     </View>
@@ -34,6 +45,7 @@ const CurrencyCalculatorView = ({
     setSelectedValueSecond,
     onChangeAmount,
     amount,
+    data,
 }) => (
 
 <View>
@@ -55,7 +67,7 @@ const CurrencyCalculatorView = ({
         <View>
             <Picker
                 selectedValue={selectedValueFirst}
-                style={{ height: 50, width: 150 }}
+                style={styles.pickerStyle}
                 onValueChange={(itemValue, itemIndex) => setSelectedValueFisrt(itemValue)}> 
                 <Picker.Item label="USD" value="USD" />
                 <Picker.Item label="PLN" value="PL" />
@@ -64,7 +76,7 @@ const CurrencyCalculatorView = ({
         <View>    
             <Picker
                 selectedValue={selectedValueSecond}
-                style={{height: 50, width: 150 }}
+                style={styles.pickerStyle}
                 onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}>
                 <Picker.Item label= "USD"  value="USD" />
                 <Picker.Item label= "PLN" value="PL" /> 

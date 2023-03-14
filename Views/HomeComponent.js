@@ -21,12 +21,11 @@ const HomeComponent = ({navigation}) => {
     const renderItem = ({item}) => {
         return(
             <TouchableOpacity
-                style={{padding: 15}}
                 onPress={()=> {
                     navigation.navigate('Currency',{code:item.code,mid:item.mid,currency:item.currency}) // gdzie wysylamy i jakie properties
                 }}>
                 <View style = {styles.itemWrapperStyle}>
-                    <Text> {item.code} {item.mid}</Text>
+                    <Text style={styles.textCourrecyStyle}> {item.code}  {item.mid}</Text>
                     <Text style ={styles.item}></Text>
                     <CountryFlag isoCode={item.code.charAt(0)+item.code.charAt(1)} size={25} />
                 </View>
@@ -35,7 +34,7 @@ const HomeComponent = ({navigation}) => {
     };
     
     return(
-    <View>
+    <View style={styles.cardStyle}>
         <FlatList
             data={data}
             keyExtractor = {item => item.code}

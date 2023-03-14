@@ -17,9 +17,6 @@ const CreateChart = ({code,mid,currency}) => {
         endDate = date[0];
         startDate = date[1];
 
-        console.log(endDate);
-        console.log(startDate);
-
         const coinInfo = await getCurrencyFromNBPDate(startDate,endDate,code);
 
         setData(coinInfo);

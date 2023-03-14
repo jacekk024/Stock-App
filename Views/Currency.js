@@ -20,10 +20,8 @@ const Currency = ({route,navigation}) => {
           amount = {amount}
           onChangeAmount = {onChangeAmount}
         >
-
-
+        
         </CurrencyView>
-
     );
 };
 
@@ -35,11 +33,10 @@ const CurrencyView = ({
   onChangeAmount,
 }) => (
 
-  <View>
+  <View >
 
     <View style = {styles.previewContainer}>
       <Text style = {styles.textStyle}>{currency}</Text>
-
     </View>
 
     <View>

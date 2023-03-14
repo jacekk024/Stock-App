@@ -4,11 +4,12 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
 
     textStyle: {
+        color: 'white',
         fontSize: 30,
         justifyContent: 'space-around',
     },
     textInputStyle: {
-        backgroundColor:  "#dcdcdc",
+        backgroundColor:  'lightgrey',
         height: 50,
         margin: 20,
         borderWidth: 3,
@@ -20,9 +21,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         flexDirection: 'row'
     },
-    itemCenter: {
-        textAlign: 'center', 
+
+    cardStyle: {
+        backgroundColor: '#121212',
     },
+    pickerStyle: {
+          height: 50,
+          width: 150,
+          color:'white',
+          borderColor: 'white',
+    },
+
+
   });
 
   export default styles;

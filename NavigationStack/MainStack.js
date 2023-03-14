@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
     return (       
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Drawer" component={DrawerNavigator}/>
             <Stack.Screen name="Home" component={HomeComponent} />
             <Stack.Screen name="CurrencyCalculator" component={CurrencyCalculator} />
@@ -19,12 +19,10 @@ function StackNavigator() {
     );
 }
 
-
 const MainStack = () => {
 
     return(
         <StackNavigator/>
-        //Warunkowy wybor stosu
     );
 }
 

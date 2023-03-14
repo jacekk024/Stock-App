@@ -1,34 +1,28 @@
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
+
     itemWrapperStyle: {
         flex: 1,
         flexDirection: "row",
-        flexWrap: 'wrap',
-        paddingHorizontal: 16,
-        paddingVertical: 20,
-        borderBottomWidth: 2,
-        borderColor: "#8b0000",
-      },
+        paddingHorizontal: 20,
+        paddingVertical: 25,
+        borderBottomWidth: 1,
+        borderColor: "#f8f8ff",
+    },
+
     item: {
         flex:2,
-      },
-    background: {
-        headerMode: 'screen',
-        cardStyle: { backgroundColor: '#deb887' },
-      },
-    CurrencyView:{
-      flex: 1,
-      flexDirection: "row",
-      flexWrap: 'wrap',
-      paddingHorizontal: 16,
-      paddingVertical: 20,
     },
-    CurrencyViewCoin:{
-      flex: 2,
+
+    cardStyle:{
+        backgroundColor: '#121212',
+    },
+    textCourrecyStyle:
+    {
+        fontSize:25,
+        color:'white',
     }
-
-
 });
 
 export default styles;
