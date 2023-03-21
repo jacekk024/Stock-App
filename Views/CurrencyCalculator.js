@@ -1,8 +1,10 @@
 import React from 'react';
-import {Text,View,TextInput} from "react-native";
+import {Text,View,TextInput,Image} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 import { useState,useEffect } from "react";
 import styles from "../Styles/StylesCurrencyCalculator";
+import{ ImagesAssets } from '../assets/ImagesAssets';
+
 
 
 
@@ -23,7 +25,6 @@ const CurrencyCalculator = ({navigation}) => {
     // }, []);
 
     return(
-    <View style = {styles.cardStyle}> 
         <CurrencyCalculatorView
             selectedValueFirst = {selectedValueFirst}
             selectedValueSecond = {selectedValueSecond}
@@ -34,7 +35,6 @@ const CurrencyCalculator = ({navigation}) => {
             data = {data}
         >           
         </CurrencyCalculatorView>
-    </View>
     );
 };
 
@@ -48,7 +48,7 @@ const CurrencyCalculatorView = ({
     data,
 }) => (
 
-<View>
+<View style={styles.backgroundCurrencyCalculatorStyle}>
     <View>
             <TextInput
                 style={styles.textInputStyle}
@@ -83,6 +83,11 @@ const CurrencyCalculatorView = ({
             </Picker>
         </View>  
     </View>
+
+    <View style = {styles.previewContainer}>
+        <Image style={styles.logoStyle} source={ImagesAssets.stockAppLogo} />
+    </View>
+
 </View>
 );
 

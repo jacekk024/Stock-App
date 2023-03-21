@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
 
     textStyle: {
         fontSize: 30,
+        color: "lightgrey",
     },
     previewContainer: {
         padding: 20,
@@ -11,15 +12,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     textInputStyle: {
-        backgroundColor:  "#dcdcdc",
+        backgroundColor:  "lightgrey",
+        borderRadius: 25,
         height: 50,
         margin: 20,
         borderWidth: 3,
         padding: 10,
     },
-    cardStyle: {
-        backgroundColor: '#708090',
-      },
+    cardStyle:{
+        flex:1,
+        flexDirection:"column",
+        paddingVertical: 50,
+        backgroundColor: '#121212',
+    },
+
   });
   
 

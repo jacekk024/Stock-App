@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import {getCurrencyFromNBP} from "../Services/Requests"
 import CountryFlag from "react-native-country-flag";
 import styles from "../Styles/StylesHome";
+import { StatusBar } from "expo-status-bar";
 
 const HomeComponent = ({navigation}) => {
 
@@ -35,6 +36,7 @@ const HomeComponent = ({navigation}) => {
     
     return(
     <View style={styles.cardStyle}>
+        <StatusBar style="light"></StatusBar>
         <FlatList
             data={data}
             keyExtractor = {item => item.code}

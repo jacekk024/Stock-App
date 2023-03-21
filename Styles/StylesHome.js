@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     item: {
         flex:2,
     },
-
     cardStyle:{
+        paddingVertical: 20,
         backgroundColor: '#121212',
     },
     textCourrecyStyle:

@@ -33,7 +33,7 @@ const CurrencyView = ({
   onChangeAmount,
 }) => (
 
-  <View >
+  <View style={styles.cardStyle}>
 
     <View style = {styles.previewContainer}>
       <Text style = {styles.textStyle}>{currency}</Text>
@@ -53,12 +53,12 @@ const CurrencyView = ({
             <Text style ={styles.textStyle}>{Number(amount).toFixed(2)} {code}</Text>
     </View>
 
-    {/* <CreateChart
+    <CreateChart
     code = {code}
     mid = {mid}
     currency = {currency}  
     >
-    </CreateChart> */}
+    </CreateChart>
 
   </View>
 );

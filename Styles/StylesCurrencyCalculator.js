@@ -3,8 +3,14 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
 
+    backgroundCurrencyCalculatorStyle:{
+        flex:1,
+        flexDirection:'column',
+        backgroundColor:'#121212',
+        paddingVertical: 40,        
+    },
     textStyle: {
-        color: 'white',
+        color: 'lightgrey',
         fontSize: 30,
         justifyContent: 'space-around',
     },
@@ -14,25 +20,28 @@ const styles = StyleSheet.create({
         margin: 20,
         borderWidth: 3,
         padding: 10,
+        borderRadius: 25,
     },
-
     previewContainer: {
-        padding: 0,
+        padding:20,
         justifyContent: 'space-around',
-        flexDirection: 'row'
-    },
-
+        flexDirection: 'row',
+    },  
     cardStyle: {
         backgroundColor: '#121212',
+        padding:30,
     },
     pickerStyle: {
-          height: 50,
-          width: 150,
-          color:'white',
-          borderColor: 'white',
+          height: 30,
+          width: 130,
+          borderRadius: 30,
+          backgroundColor:  'lightgrey',
     },
-
-
+    logoStyle: {
+        width: 500,
+        height: 500,
+        resizeMode: 'contain'
+    },
   });
 
   export default styles;
