@@ -7,7 +7,6 @@ import Currency from "../Views/Currency"
 
 const Stack = createNativeStackNavigator();
 
-
 function StackNavigator() {
     return (       
         <Stack.Navigator screenOptions={{headerShown: false}}>

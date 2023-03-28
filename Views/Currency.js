@@ -10,7 +10,7 @@ const Currency = ({route,navigation}) => {
     const {code, mid, currency} = route.params;
     const [amount, onChangeAmount] = useState(0);
 
-
+    
 
     return(
         <CurrencyView 
@@ -43,20 +43,21 @@ const CurrencyView = ({
             <TextInput
                 style={styles.textInputStyle}
                 selectionColor={'black'}
+                cursorColor = {'black'}
                 value={amount}
-                keyboardType="numeric"
+                keyboardType={'numeric'}
                 onChangeText={v => onChangeAmount(Number(v * mid))}>
             </TextInput>
     </View>
     
     <View style = {styles.previewContainer}>
-            <Text style ={styles.textStyle}>{Number(amount).toFixed(2)} {code}</Text>
+            <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)} {code}</Text>
     </View>
 
     <CreateChart
-    code = {code}
-    mid = {mid}
-    currency = {currency}  
+      code = {code}
+      mid = {mid}
+      currency = {currency}  
     >
     </CreateChart>
 

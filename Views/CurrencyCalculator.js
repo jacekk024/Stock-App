@@ -15,15 +15,6 @@ const CurrencyCalculator = ({navigation}) => {
     const [amount, onChangeAmount] = useState(10);
     const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
 
-    // const fetchCoinInfo = async () => {
-    //     const coinInfo = await getCurrencyFromNBP();
-    //     setData(coinInfo);
-    // };
-    
-    // useEffect(() => {
-    //     fetchCoinInfo();
-    // }, []);
-
     return(
         <CurrencyCalculatorView
             selectedValueFirst = {selectedValueFirst}
