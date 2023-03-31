@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import { Switch,View,Text } from "react-native";
 import styles from "../Styles/StylesOptions";
 
-const Options = () =>
+const Options = ({navigation}) =>
 {
     const [isEnabled,setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);

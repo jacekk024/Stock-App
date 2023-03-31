@@ -1,10 +1,12 @@
-import { Text,View,FlatList, Button,TouchableOpacity } from "react-native";
+import { Text,View,FlatList, TouchableOpacity } from "react-native";
 import { useState,useEffect } from "react";
 
 import {getCurrencyFromNBP} from "../Services/Requests"
 import CountryFlag from "react-native-country-flag";
 import styles from "../Styles/StylesHome";
 import { StatusBar } from "expo-status-bar";
+
+
 
 const HomeComponent = ({navigation}) => {
 

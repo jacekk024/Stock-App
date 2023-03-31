@@ -4,7 +4,6 @@ import {Picker} from '@react-native-picker/picker';
 import { useState,useEffect } from "react";
 import styles from "../Styles/StylesCurrencyCalculator";
 import { getCurrencyFromNBP} from '../Services/Requests';
-import CountryFlag from "react-native-country-flag";
 
 
 
@@ -36,7 +35,9 @@ const CurrencyCalculator = ({navigation}) => {
         return(
             
         data.map((item) => {
-            return <Picker.item  label={item.code.toString()} value={item.code.toString()} />;
+            return(
+                 <Picker.item  label={`${item.code}`} value={`${item.code}`} />
+                 );
         }));
     };
 
@@ -67,7 +68,7 @@ const CurrencyCalculator = ({navigation}) => {
                 selectedValue={selectedValueFirst}
                 style={styles.pickerStyle}
                 onValueChange={(itemValue, itemIndex) => setSelectedValueFisrt(itemValue)}> 
-                {renderFlagsList()}
+                {/* {renderFlagsList()} */}
 
             </Picker>)}
         </View>
@@ -79,9 +80,7 @@ const CurrencyCalculator = ({navigation}) => {
                 selectedValue={selectedValueSecond}
                 style={styles.pickerStyle}
                 onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}>
-
-                {renderFlagsList()}
-
+                {/* {renderFlagsList()} */}
             </Picker>)}
         </View>  
     </View>

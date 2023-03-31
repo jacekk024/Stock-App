@@ -1,4 +1,4 @@
-import { ActivityIndicator,View} from "react-native";
+import { ActivityIndicator,View,Dimensions} from "react-native";
 import { useState,useEffect } from "react";
 import { LineChart } from "react-native-wagmi-charts";
 
@@ -11,6 +11,7 @@ const CreateChart = ({code,mid,currency}) => {
 
     const [chartDataGlobal,setchartDataGlobal] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const screenWidth = Dimensions.get("window").width;
 
 
     const fetchCoinInfoDate = async () =>
@@ -33,25 +34,26 @@ const CreateChart = ({code,mid,currency}) => {
 
 
   return(
-
-    <View style={{ paddingHorizontal: 10 }}>
+    <View >
     {(isLoading || !chartDataGlobal.length) ? (
       <ActivityIndicator />
-    ) : (
+        ) : (
       <LineChart.Provider
       
        data={chartDataGlobal}>
 
-        <LineChart >
-          <LineChart.Path color="gold" animateOnMount="foreground">
-            <LineChart.Gradient color="gold" />
-          </LineChart.Path>
-          </LineChart>
+        <LineChart>
+
+            <LineChart.Path color = {"gold"}/>
+            <LineChart.CursorLine color={"gold"}>
+              <LineChart.Tooltip />
+            </LineChart.CursorLine>
+
+        </LineChart>
 
       </LineChart.Provider>
     )}
-  </View>
-
+    </View>
   );
 }
 

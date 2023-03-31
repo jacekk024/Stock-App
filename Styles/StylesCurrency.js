@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     cardStyle:{
         flex:1,
         flexDirection:"column",
-        paddingVertical: 50,
+        paddingVertical: 40,
         backgroundColor: '#121212',
     },
 
