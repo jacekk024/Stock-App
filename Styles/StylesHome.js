@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         borderColor: "#f8f8ff",
     },
 
-    item: {
+    itemStyle: {
         flex:2,
     },
     cardStyle:{

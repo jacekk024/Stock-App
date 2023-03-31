@@ -6,13 +6,16 @@ import {getCurrencyFromNBPDate} from "../Services/Requests"
 import {CalculateTime} from "../Services/CalculateTime"
 
 
+
 const CreateChart = ({code,mid,currency}) => {
 
     const [chartDataGlobal,setchartDataGlobal] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+
     const fetchCoinInfoDate = async () =>
     {
+      setchartDataGlobal([]); // czyszczenie wykresu - za kazdym razem wczytujemy nowe dane
       setIsLoading(true);
 
       var date = CalculateTime();
@@ -24,7 +27,6 @@ const CreateChart = ({code,mid,currency}) => {
         setchartDataGlobal(chartData => [...chartData, {timestamp: i, value:coinInfo[i].mid}]);
      setIsLoading(false);
     };
-
   useEffect(() => {
     fetchCoinInfoDate();
   },[]);
@@ -32,15 +34,20 @@ const CreateChart = ({code,mid,currency}) => {
 
   return(
 
-    <View style={{ paddingHorizontal: 10 , paddingVertical:50}}>
+    <View style={{ paddingHorizontal: 10 }}>
     {(isLoading || !chartDataGlobal.length) ? (
       <ActivityIndicator />
     ) : (
+      <LineChart.Provider
+      
+       data={chartDataGlobal}>
 
-      <LineChart.Provider data={chartDataGlobal}>
-        <LineChart>
-          <LineChart.Path color="gold"/>
-        </LineChart>
+        <LineChart >
+          <LineChart.Path color="gold" animateOnMount="foreground">
+            <LineChart.Gradient color="gold" />
+          </LineChart.Path>
+          </LineChart>
+
       </LineChart.Provider>
     )}
   </View>

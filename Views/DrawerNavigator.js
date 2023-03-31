@@ -1,10 +1,12 @@
+
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeComponent from '../Views/HomeComponent';
-import CurrencyCalculator from "./CurrencyCalculator"
-
+import CurrencyCalculator from "./CurrencyCalculator";
+import Options from './Options';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const Drawer = createDrawerNavigator();
 
-function DrawerNavigator() {
+const DrawerNavigator = () => {
     return (       
         <Drawer.Navigator
                 screenOptions={{
@@ -14,9 +16,22 @@ function DrawerNavigator() {
                 paddingVertical:40,
                 }}}>
 
-            <Drawer.Screen options={{headerShown: false}} name="Currency List" component={HomeComponent} />
-            <Drawer.Screen options={{headerShown: false}} name="Currency Calculator" component={CurrencyCalculator} />
-            <Drawer.Screen options={{headerShown: false}} name="Options" component={CurrencyCalculator}></Drawer.Screen>
+
+            <Drawer.Screen 
+                name="Currency List"
+                component={HomeComponent}
+                options={{headerShown: false,drawerIcon: () => (<Ionicons name="home-outline" size={22} color={"black"} />),}}                   
+                />
+            <Drawer.Screen 
+                name="Currency Calculator" 
+                component={CurrencyCalculator} 
+                options={{headerShown: false,drawerIcon: () => (<Ionicons name="calculator-outline" size={22} color={"black"} />),}}
+                />
+            <Drawer.Screen 
+                name="Options" 
+                component={Options} 
+                options={{headerShown: false,drawerIcon: () => (<Ionicons name="build-outline" size={22} color={"black"} />),}}
+                />
         </Drawer.Navigator>
     );
 }

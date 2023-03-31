@@ -37,11 +37,6 @@ const styles = StyleSheet.create({
           borderRadius: 30,
           backgroundColor:  'lightgrey',
     },
-    logoStyle: {
-        width: 500,
-        height: 500,
-        resizeMode: 'contain'
-    },
   });
 
   export default styles;

@@ -27,7 +27,7 @@ const HomeComponent = ({navigation}) => {
                 }}>
                 <View style = {styles.itemWrapperStyle}>
                     <Text style={styles.textCourrecyStyle}> {item.code}  {item.mid}</Text>
-                    <Text style ={styles.item}></Text>
+                    <Text style ={styles.itemStyle}></Text>
                     <CountryFlag isoCode={item.code.charAt(0)+item.code.charAt(1)} size={25} />
                 </View>
             </TouchableOpacity>

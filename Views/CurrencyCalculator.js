@@ -1,46 +1,49 @@
 import React from 'react';
-import {Text,View,TextInput,Image} from "react-native";
+import {Text,View,TextInput,ActivityIndicator} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 import { useState,useEffect } from "react";
 import styles from "../Styles/StylesCurrencyCalculator";
-import{ ImagesAssets } from '../assets/ImagesAssets';
-
+import { getCurrencyFromNBP} from '../Services/Requests';
+import CountryFlag from "react-native-country-flag";
 
 
 
 const CurrencyCalculator = ({navigation}) => {
 
-    const [selectedValueFirst, setSelectedValueFisrt] = useState("PLN");
-    const [selectedValueSecond, setSelectedValueSecond] = useState("USD");
+    const [selectedValueFirst, setSelectedValueFisrt] = useState("");
+    const [selectedValueSecond, setSelectedValueSecond] = useState("");
     const [amount, onChangeAmount] = useState(10);
+    const [isLoading, setIsLoading] = useState(false);
+
     const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
 
+    const fetchCoinInfo = async () => {
+        setIsLoading(true)
+        const coinInfo = await getCurrencyFromNBP();
+        setData(coinInfo);
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        fetchCoinInfo();
+        
+    }, []);
+
+
+    const renderFlagsList = () => 
+    {
+
+        return(
+            
+        data.map((item) => {
+            return <Picker.item  label={item.code.toString()} value={item.code.toString()} />;
+        }));
+    };
+
     return(
-        <CurrencyCalculatorView
-            selectedValueFirst = {selectedValueFirst}
-            selectedValueSecond = {selectedValueSecond}
-            setSelectedValueFisrt = {setSelectedValueFisrt}
-            setSelectedValueSecond = {setSelectedValueSecond}
-            onChangeAmount = {onChangeAmount}
-            amount = {amount}
-            data = {data}
-        >           
-        </CurrencyCalculatorView>
-    );
-};
+    <View style={styles.backgroundCurrencyCalculatorStyle}>
 
-const CurrencyCalculatorView = ({
-    selectedValueFirst,
-    selectedValueSecond,
-    setSelectedValueFisrt,
-    setSelectedValueSecond,
-    onChangeAmount,
-    amount,
-    data,
-}) => (
-
-<View style={styles.backgroundCurrencyCalculatorStyle}>
-    <View>
+    <View >
             <TextInput
                 style={styles.textInputStyle}
                 selectionColor={'black'}
@@ -56,31 +59,37 @@ const CurrencyCalculatorView = ({
 
     <View style = {styles.previewContainer}>
         <View>
+        {(isLoading || !data.length) ? (
+        <ActivityIndicator />
+        ) : (    
+
             <Picker
                 selectedValue={selectedValueFirst}
                 style={styles.pickerStyle}
                 onValueChange={(itemValue, itemIndex) => setSelectedValueFisrt(itemValue)}> 
-                <Picker.Item label="USD" value="USD" />
-                <Picker.Item label="PLN" value="PL" />
-            </Picker>
+                {renderFlagsList()}
+
+            </Picker>)}
         </View>
-        <View>    
+        <View>
+        {(isLoading || !data.length) ? (
+        <ActivityIndicator />
+        ) : (        
             <Picker
                 selectedValue={selectedValueSecond}
                 style={styles.pickerStyle}
                 onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}>
-                <Picker.Item label= "USD"  value="USD" />
-                <Picker.Item label= "PLN" value="PL" /> 
-            </Picker>
+
+                {renderFlagsList()}
+
+            </Picker>)}
         </View>  
     </View>
-
-    <View style = {styles.previewContainer}>
-        <Image style={styles.logoStyle} source={ImagesAssets.stockAppLogo} />
-    </View>
-
 </View>
 );
+};
+
+
 
 
 export default CurrencyCalculator;
