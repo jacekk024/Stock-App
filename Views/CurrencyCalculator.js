@@ -11,7 +11,7 @@ const CurrencyCalculator = ({navigation}) => {
 
     const [selectedValueFirst, setSelectedValueFisrt] = useState("");
     const [selectedValueSecond, setSelectedValueSecond] = useState("");
-    const [amount, onChangeAmount] = useState(10);
+    const [amount, onChangeAmount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
     const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
@@ -31,7 +31,6 @@ const CurrencyCalculator = ({navigation}) => {
 
     const renderFlagsList = () => 
     {
-
         return(
             
         data.map((item) => {
@@ -68,7 +67,10 @@ const CurrencyCalculator = ({navigation}) => {
                 selectedValue={selectedValueFirst}
                 style={styles.pickerStyle}
                 onValueChange={(itemValue, itemIndex) => setSelectedValueFisrt(itemValue)}> 
-                {/* {renderFlagsList()} */}
+                {
+                    
+                    
+                }
 
             </Picker>)}
         </View>

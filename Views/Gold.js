@@ -28,6 +28,9 @@ const Gold = () =>{
 
     return(
     <View style = {styles.cardStyle}>
+
+      
+
     <View>
     {(isLoading || !chartDataGlobal.length) ? (
       <ActivityIndicator />

@@ -6,7 +6,6 @@ import {getCurrencyFromNBPDate} from "../Services/Requests"
 import {CalculateTime} from "../Services/CalculateTime"
 import { GestureHandlerRootView  } from "react-native-gesture-handler";
 
-
 const Currency = ({route,navigation}) => {
 
     const {code, mid, currency} = route.params;
@@ -35,9 +34,6 @@ const Currency = ({route,navigation}) => {
       fetchCoinInfoDate();
     },[]);
 
-
-
-
     return(
       <View style={styles.cardStyle}>
 
@@ -61,8 +57,8 @@ const Currency = ({route,navigation}) => {
         <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)} {code}</Text>
       </View> 
       
-      <View>
-      <GestureHandlerRootView>
+      <View style ={{paddingHorizontal:10,paddingVertical:20}}>
+      <GestureHandlerRootView >
       { (isLoading || !chartDataGlobal.length) ? (
       <ActivityIndicator />
         ) : (
@@ -70,7 +66,7 @@ const Currency = ({route,navigation}) => {
       
        data={chartDataGlobal}>
 
-        <LineChart>
+        <LineChart >
             <LineChart.Path color={"gold"} >
                 <LineChart.Gradient color={"gold"} />
             </LineChart.Path>
@@ -82,19 +78,11 @@ const Currency = ({route,navigation}) => {
 
       </LineChart.Provider>
       )}
-      </GestureHandlerRootView>
+      </GestureHandlerRootView>   
+      </View>
 
     </View>
-
-  
-          
-    </View>
-    
     )
 };
-
-
-
-
 
 export default Currency;
