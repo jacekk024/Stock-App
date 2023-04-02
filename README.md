@@ -19,6 +19,7 @@ such as currency calculator and plotting charts of for currencies and gold. It g
 ## Technologies
 * React Native
 * JavaScript
+* Node.js
 
 ## Setup
 Download repo to your computer.
@@ -35,7 +36,8 @@ Scan the QR code and app will istall automaticlly.
 In project was used many external libraries such as:
 * react-native-wagmi-charts
 (https://www.npmjs.com/package/react-native-wagmi-charts#interactive-cursors)
-
+* react-native-country-flag
+(https://www.npmjs.com/package/react-native-country-flag)
 ## Results
     TODO 
 
