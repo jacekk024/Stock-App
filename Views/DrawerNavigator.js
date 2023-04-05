@@ -17,7 +17,6 @@ const DrawerNavigator = () => {
                 paddingVertical:40,
                 }}}>
 
-
             <Drawer.Screen 
                 name="Currency List"
                 component={HomeComponent}

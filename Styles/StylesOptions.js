@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212',
         paddingVertical: 40,
     },
+    viewItemStyle:{
+        flexDirection:'row',
+    },
     itemStyle:{
         color: 'white'
     },

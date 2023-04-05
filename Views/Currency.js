@@ -58,29 +58,24 @@ const Currency = ({route,navigation}) => {
       </View> 
       
       <View style ={{paddingHorizontal:10,paddingVertical:20}}>
-      <GestureHandlerRootView >
-      { (isLoading || !chartDataGlobal.length) ? (
-      <ActivityIndicator />
-        ) : (
-      <LineChart.Provider
-      
-       data={chartDataGlobal}>
-
-        <LineChart >
+        <GestureHandlerRootView >
+        { (isLoading || !chartDataGlobal.length) ? (
+        <ActivityIndicator />
+          ) : (
+        <LineChart.Provider
+          data={chartDataGlobal}>
+          <LineChart >
             <LineChart.Path color={"gold"} >
                 <LineChart.Gradient color={"gold"} />
             </LineChart.Path>
-
             <LineChart.CursorLine color={"gold"}>
             <LineChart.Tooltip />
             </LineChart.CursorLine>
-        </LineChart>
-
-      </LineChart.Provider>
-      )}
-      </GestureHandlerRootView>   
+          </LineChart>
+        </LineChart.Provider>
+        )}
+        </GestureHandlerRootView>   
       </View>
-
     </View>
     )
 };

@@ -11,8 +11,8 @@ function StackNavigator() {
     return (       
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Drawer" component={DrawerNavigator}/>
-            <Stack.Screen name="Home" component={HomeComponent} />
-            <Stack.Screen name="CurrencyCalculator" component={CurrencyCalculator} />
+            <Stack.Screen name="Currency List" component={HomeComponent} />
+            <Stack.Screen name="Trade" component={CurrencyCalculator} />
             <Stack.Screen name="Currency" component={Currency}/>
         </Stack.Navigator>
     );

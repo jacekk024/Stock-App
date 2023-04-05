@@ -11,13 +11,18 @@ const Options = ({navigation}) =>
 
     return(
         <View style = {styles.cardStyle}>
-            <Text style = {styles.itemStyle}>Options</Text>
-            <Switch
+            <View style={styles.viewItemStyle}>
+                <Text style = {styles.itemStyle}>Options</Text>
+            </View>
+            <View style={styles.viewItemStyle}>
+                <Switch
+                    style = {styles.itemStyle}
                     trackColor={{false: '#767577', true: '#81b0ff'}}
                     thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                     onValueChange={toggleSwitch}
                     value={isEnabled}
-            />
+                />
+            </View>
         </View>
     );
 }
