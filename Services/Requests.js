@@ -22,11 +22,21 @@ export const getCurrencyFromNBPDate = async (dateStart,dateEnd,code) => {
         console.error(error);
     }
 };
-
+export const getGoldTodayInfoFromNBP = async () => {
+    try{
+        const response = await 
+            fetch(`http://api.nbp.pl/api/cenyzlota/today/?format=json`);
+        const json = await response.json();
+        return json;
+    }
+    catch(error){
+        console.error(error);
+    }
+};
 export const getGoldInfoFromNBPDate = async () => {
     try{
         const response = await 
-            fetch(`http://api.nbp.pl/api/cenyzlota/last/255?format=json`);
+            fetch(`http://api.nbp.pl/api/cenyzlota/last/255/?format=json`);
         const json = await response.json();
         return json;
     }

@@ -8,8 +8,6 @@
 * [Useful Resources](#useful-resources)
 * [Results](#results)
 
-
-
 ## General Info
 This is a mobile currency app, which track the current value of currencies and gold. It provides many functions
 such as currency calculator and plotting charts of for currencies and gold. It allows you to simulate trading with currencies.
@@ -23,7 +21,6 @@ such as currency calculator and plotting charts of for currencies and gold. It a
 
 ## Installation
 To install and run the app on your mobile device, follow these steps:
-
 1. Clone the repository to your local machine
 2. Run Expo Go 
 3. Enter the project folder

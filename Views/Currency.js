@@ -15,7 +15,6 @@ const Currency = ({route,navigation}) => {
     const [isLoading, setIsLoading] = useState(false);
     const screenWidth = Dimensions.get("window").width;
 
-
     const fetchCoinInfoDate = async () =>
     {
       setchartDataGlobal([]); // czyszczenie wykresu - za kazdym razem wczytujemy nowe dane
@@ -37,8 +36,11 @@ const Currency = ({route,navigation}) => {
     return(
       <View style={styles.cardStyle}>
 
-       <View style = {styles.previewContainer}>
+      <View style = {styles.previewContainer}>
         <Text style = {styles.textStyle}>{currency}</Text>
+      </View>
+      <View style = {styles.previewContainer}>
+        <Text style = {styles.textStyle}>PLN/{code}: {mid}</Text>
       </View>
   
       <View>
@@ -48,13 +50,13 @@ const Currency = ({route,navigation}) => {
           cursorColor = {'black'}
           value={amount}
           keyboardType={'numeric'}
-          maxLength = {11}
-          onChangeText={v => onChangeAmount(Number(v * mid))}>
+          maxLength = {9}
+          onChangeText={v => onChangeAmount(Number(v / mid))}>
         </TextInput>
       </View>
       
       <View style = {styles.previewContainer}>
-        <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)} {code}</Text>
+        <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)}{code}</Text>
       </View> 
       
       <View style ={{paddingHorizontal:10,paddingVertical:20}}>
@@ -69,7 +71,12 @@ const Currency = ({route,navigation}) => {
                 <LineChart.Gradient color={"gold"} />
             </LineChart.Path>
             <LineChart.CursorLine color={"gold"}>
-            <LineChart.Tooltip />
+            <LineChart.Tooltip textStyle={{
+                borderRadius: 4,
+                color: 'white',
+                fontSize: 18,
+                padding: 4,
+            }}/>
             </LineChart.CursorLine>
           </LineChart>
         </LineChart.Provider>

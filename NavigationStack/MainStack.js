@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import HomeComponent from '../Views/HomeComponent';
 import CurrencyCalculator from "../Views/CurrencyCalculator"
 import DrawerNavigator from "../Views/DrawerNavigator"

@@ -32,10 +32,9 @@ const styles = StyleSheet.create({
         padding:30,
     },
     pickerStyle: {
-          height: 30,
-          width: 130,
-          borderRadius: 30,
-          backgroundColor:  'lightgrey',
+        width: 120,
+        borderRadius: 30,
+        backgroundColor:  'lightgrey',
     },
   });
 

@@ -9,19 +9,13 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         backgroundColor: '#121212',
-        paddingVertical: 40,
+        paddingVertical: 50,
+        paddingHorizontal: 20,
     },
     viewItemStyle:{
         flexDirection:'row',
+        paddingVertical:20,
     },
-    itemStyle:{
-        color: 'white'
-    },
-
 });
 
 export default styles;
-
-
-
-
