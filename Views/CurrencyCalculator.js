@@ -8,12 +8,15 @@ import CountryFlag from "react-native-country-flag";
 
 const CurrencyCalculator = ({navigation}) => {
 
-    const [selectedValueFirst, setSelectedValueFisrt] = useState("THB");
-    const [selectedValueSecond, setSelectedValueSecond] = useState("THB");
-    const [amount, onChangeAmount] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [data, setData] = useState({}); // hook stanu z poczatkowo wartoscia 0, x is readonly 
+    const [selectedValueFirst, setSelectedValueFisrt] = useState("");
+    const [priceOfSelectedValueFirst,setPriceOfSelectedValueFirst] = useState(1);
+    const [selectedValueSecond, setSelectedValueSecond] = useState("");                 // 
+    const [priceOfSelectedValueSecond,setPriceOfSelectedValueSecond] = useState(1);     // price of second currency 
+    const [infoCurrencyFirst,setInfoCurrencyFirst] = useState({});      // info about first currency {"code": "EUR", "currency": "euro", "mid": 4.6862}
+    const [infoCurrencySecond,setInfoCurrencySecond] = useState({});    // info about second currency {"code": "EUR", "currency": "euro", "mid": 4.6862}
+    const [amount, onChangeAmount] = useState(0);                       // amount of currencies set by user
+    const [isLoading, setIsLoading] = useState(false);                  // waiting for fetch data from NBP API 
+    const [data, setData] = useState({});                               // hook for fetch data
 
     const fetchCoinInfo = async () => {
         setIsLoading(true)
@@ -26,6 +29,29 @@ const CurrencyCalculator = ({navigation}) => {
         fetchCoinInfo();
     }, []);
 
+    const firstSelector = (itemValue) => 
+    {
+        setSelectedValueFisrt(itemValue);
+        const found = data.find(code => code.code === itemValue);
+        setPriceOfSelectedValueFirst(found.mid);
+        setInfoCurrencyFirst(found);
+    };
+
+    const secondSelector = (itemValue) => 
+    {
+        setSelectedValueSecond(itemValue);
+        const found = data.find(code => code.code === itemValue);
+        setPriceOfSelectedValueSecond(found.mid);
+        setInfoCurrencySecond(found);
+    };
+
+    const calculateExchangePrice = (amount) =>
+    {
+        return(
+            Number(amount * (priceOfSelectedValueFirst/priceOfSelectedValueSecond)).toFixed(2)
+        );
+    };
+
     return(
     <View style={styles.backgroundCurrencyCalculatorStyle}>
 
@@ -35,56 +61,52 @@ const CurrencyCalculator = ({navigation}) => {
                 selectionColor={'black'}
                 value={amount}
                 keyboardType="numeric"
+                maxLength = {9}
                 onChangeText={v => onChangeAmount(Number(v))}>
             </TextInput>
     </View>
-    
-    <View style = {styles.previewContainer}>
-            <Text style ={styles.textStyle}>{amount}</Text>
-    </View>
 
     <View style = {styles.previewContainer}>
-        <View>
         {(isLoading || !data.length) ? (
         <ActivityIndicator />
         ) : (
-            <View>
-    
+            
             <Picker 
                 selectedValue={selectedValueFirst}
                 style={styles.pickerStyle}
-                onValueChange={(itemValue, itemIndex) => setSelectedValueFisrt(itemValue)}> 
+                onValueChange={(itemValue, itemIndex) => firstSelector(itemValue)}> 
                 {data.map((currency) => (
-                    <Picker.Item key={currency.code} label={currency.code} value={currency.code} />
+                    <Picker.Item key={currency.code} label={currency.currency} value={currency.code} />
                 ))}
 
             </Picker>
-            <CountryFlag isoCode={selectedValueFirst.charAt(0)+selectedValueFirst.charAt(1)} size={25} />
 
-            </View>
             )}
-        </View>
-        <View>
+            <CountryFlag  isoCode={selectedValueFirst.charAt(0)+selectedValueFirst.charAt(1)} size={55} />
+      
+    </View>
+
+    <View style= {styles.previewContainer}>
         {(isLoading || !data.length) ? (
         <ActivityIndicator />
         ) : (      
-            <View>
-  
             <Picker
                 selectedValue={selectedValueSecond}
                 style={styles.pickerStyle}
-                onValueChange={(itemValue) => setSelectedValueSecond(itemValue)}>
+                onValueChange={(itemValue) => secondSelector(itemValue)}>
                 {data.map((currency) => (
-                    <Picker.Item key={currency.code} label={currency.code} value={currency.code} />
+                    <Picker.Item key={currency.code} label={currency.currency} value={currency.code} />
                 ))
                 }
             </Picker>
-            <CountryFlag isoCode={selectedValueSecond.charAt(0)+selectedValueSecond.charAt(1)} size={25} />
-            </View>
-
             )}
-        </View>  
-    </View>
+            <CountryFlag isoCode={selectedValueSecond.charAt(0)+selectedValueSecond.charAt(1)} size={55} />
+    </View>                
+
+    <View style = {styles.previewContainer}>
+            <Text style ={styles.textStyle}>{calculateExchangePrice(amount)}</Text>
+    </View>            
+
 </View>
 );
 };

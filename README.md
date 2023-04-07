@@ -33,7 +33,13 @@ In project was used many external libraries such as:
 (https://www.npmjs.com/package/react-native-wagmi-charts#interactive-cursors)
 * react-native-country-flag
 (https://www.npmjs.com/package/react-native-country-flag)
+* react-native-picker
+(https://github.com/react-native-picker/picker)
+* Source of data for my aplication - NBP API
+(http://api.nbp.pl)
 ## Results
-    TODO 
+
+*   Screenshot of the gold price chart in my app, displaying historical gold values over the past 255 days and today's current price. The current gold price is shown in bold text at the top of the chart. Information about gold prices is fetch from NBP API.
+    ![Gold](https://user-images.githubusercontent.com/45696277/230684404-97a23774-4aff-4423-8445-5fb4a738e148.jpg)
 
 

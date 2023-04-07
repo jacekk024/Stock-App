@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         color: 'lightgrey',
-        fontSize: 30,
+        fontSize: 50,
         justifyContent: 'space-around',
     },
     textInputStyle: {

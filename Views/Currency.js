@@ -56,7 +56,7 @@ const Currency = ({route,navigation}) => {
       </View>
       
       <View style = {styles.previewContainer}>
-        <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)}{code}</Text>
+        <Text style ={styles.textStyle} on>{Number(amount).toFixed(2)} {code}</Text>
       </View> 
       
       <View style ={{paddingHorizontal:10,paddingVertical:20}}>
