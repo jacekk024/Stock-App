@@ -39,7 +39,25 @@ In project was used many external libraries such as:
 (http://api.nbp.pl)
 ## Results
 
-*   Screenshot of the gold price chart in my app, displaying historical gold values over the past 255 days and today's current price. The current gold price is shown in bold text at the top of the chart. Information about gold prices is fetch from NBP API.
+### Gold View
+   Screenshot of the gold price chart in my app, displaying historical gold values over the past 255 days and today's current price. The current gold price is shown in bold text at the top of the chart. Information about gold prices is fetch from NBP API.
     <img src="https://user-images.githubusercontent.com/45696277/230684404-97a23774-4aff-4423-8445-5fb4a738e148.jpg" alt="Gold" width="400" height = "700"/>
+
+### Currency
+
+![Currency](https://user-images.githubusercontent.com/45696277/230687019-e4ac0d68-f821-48cf-a57d-47a85e057bcc.jpg)
+
+### Currency Calculator
+
+![Exchange](https://user-images.githubusercontent.com/45696277/230687142-cd2719bf-bf05-40ac-a2bf-a6e8750cdf56.jpg)
+
+### Currency List
+
+![List](https://user-images.githubusercontent.com/45696277/230687164-858d4f4e-555e-47c8-ade9-6fbe0d5ee94a.jpg)
+
+### Drawer Navigation
+
+![Drawer](https://user-images.githubusercontent.com/45696277/230687185-099f02bc-e128-4f0e-8d16-edea015bd210.jpg)
+
 
 
