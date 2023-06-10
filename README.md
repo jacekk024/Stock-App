@@ -1,5 +1,5 @@
 # Stock-App
-
+   https://github.com/jacekk024/Stock-App/assets/45696277/d49dc2a1-3c3a-42ff-8818-06f179f95535
 ## Table of Contents
 * [General info](#general-info)
 * [Tools](#tools)
