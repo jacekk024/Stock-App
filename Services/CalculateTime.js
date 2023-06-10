@@ -12,7 +12,7 @@ export const CalculateTime = () => {
   
     var priorDate = yyyyPast + '-' + mmPast + '-'+ ddPast;
     today = yyyy + '-' + mm + '-' + dd;
-  
+
     return ([today,priorDate]);
   };
 

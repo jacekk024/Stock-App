@@ -25,7 +25,7 @@ export const getCurrencyFromNBPDate = async (dateStart,dateEnd,code) => {
 export const getGoldTodayInfoFromNBP = async () => {
     try{
         const response = await 
-            fetch(`http://api.nbp.pl/api/cenyzlota/today/?format=json`);
+            fetch(`http://api.nbp.pl/api/cenyzlota/?format=json`);
         const json = await response.json();
         return json;
     }

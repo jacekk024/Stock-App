@@ -21,7 +21,7 @@ const Gold = () =>{
       const goldInfo = await getGoldInfoFromNBPDate();
       for (let i = 0; i < goldInfo.length; i++) 
         setChartDataGlobal(chartData => [...chartData, {timestamp: i, value:goldInfo[i].cena}]);
-     setIsLoading(false);
+      setIsLoading(false);
     };
 
     const fetchGoldInfoToday = async () =>
